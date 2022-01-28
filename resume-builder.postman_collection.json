@@ -1,0 +1,731 @@
+{
+	"info": {
+		"_postman_id": "6ee56581-80b6-4143-998c-f8cf92842e61",
+		"name": "resume-builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"a@gmail.com\",\r\n    \"password\":\"aa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"aa@gmail.com\",\r\n    \"password\":\"aa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 18 Jan 2022 09:13:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "483"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0MjU4MzYyNiwiaWF0IjoxNjQyNDk3MjI2LCJqdGkiOiJkNzI3NjkyY2E0NDk0YzE5YmE0YmVhZjBkMzY2ZGE3YSIsInVzZXJfaWQiOjF9.xLOqZM2AeWKOM8PSUMGe75jxvlLgiJwX_6Afb7jkJ2Y\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get user profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profilePic",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "headline",
+							"value": "good luch s",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/all/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"all",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get user profile",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/userProfile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"userProfile",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 18 Jan 2022 09:41:44 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "PATCH, POST, OPTIONS, PUT, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "363"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"msg\": \"\",\n    \"additonalMsg\": \"\",\n    \"data\": {\n        \"user\": 1,\n        \"professionalTitle\": \"Django Developer\",\n        \"headline\": \"hello i am a frontend developer and want an internship\",\n        \"profilePic\": \"http://127.0.0.1:8000/media/profile/s_cbIQkOv.jpg\",\n        \"github\": \"https://github.com/satyam4484\",\n        \"linkedin\": \"https://www.linkedin.com/in/satyam-singh-46b0a4165/\",\n        \"contactNo\": \"9106643997\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get user projects",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"projectTitle\":\"sssnsknskskn\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects/10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects",
+						"10"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get user projects",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectTitle\":\"ss\",\r\n    \"projectSubTitle\":\"newp\",\r\n    \"projectDescription\":\"new project from frontend\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 18 Jan 2022 09:57:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "DELETE, PATCH, POST, OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "848"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"msg\": \"\",\n    \"additonalMsg\": \"\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"projectTitle\": \"Tiki Taka Coaching\",\n            \"projectSubTitle\": \"Build at PDB Technologies and Solutions\",\n            \"projectDescription\": [\n                \"Belong’s to Client from USA\",\n                \"  Build Python-Django and use of bootstrap\",\n                \" A Interaction between coach and player through video recorded by Coach for players\",\n                \" Players submit their own video as proof that they pratice well and coach reviews accordingly\"\n            ],\n            \"user\": 1,\n            \"projectLink\": \"https://github.com/satyam4484/TIKI-TAKA-Coaching\"\n        },\n        {\n            \"id\": 2,\n            \"projectTitle\": \"Pinterest clone\",\n            \"projectSubTitle\": \"Build using Django Framework\",\n            \"projectDescription\": [\n                \"It is Hosted click on greeen area for visiting\",\n                \"CRUD operations with special functionality of Like , Dislike , Comment , Download image \",\n                \"Functionality \"\n            ],\n            \"user\": 1,\n            \"projectLink\": \"https://github.com/satyam4484/pinterest\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "experiences",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"organisationName\":\"micorsoft techonlogy and solutin\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/experience/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"experience",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "experiences",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organisationName\":\"micorsoft techonlogy and solutin\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/experience/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"experience",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 18 Jan 2022 17:56:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, PATCH, OPTIONS, GET, DELETE"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "493"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"msg\": \"\",\n    \"additonalMsg\": \"\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user\": 1,\n            \"organisationName\": \"PDB Technologies and Solution\",\n            \"role\": \"Software Development intern\",\n            \"startDate\": \"2021-08-12\",\n            \"endDate\": \"2021-11-30\",\n            \"loaction\": \"Baner , pune.\",\n            \"description\": \"Worked on Django-React based project.  Implemented a single application in backened part using python and JIRA rest Api’s to track and manage issues.  Implemented the Rest api’s for the app , as a means to use in Client side using React js.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Achievements",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MDg5MjI2LCJpYXQiOjE2NDI0OTcyMjYsImp0aSI6IjM1Yjc4YTMxODA3OTRmZjNhY2RiMGNlMTQ3ODhiNzQyIiwidXNlcl9pZCI6MX0.N85LCYLwo-2uW_FpAjZxZ-Lu7pK8pZuLtOqcuClwnfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"archieved\":\"wurse\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/achievement/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"achievement",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"as@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/validate/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"validate",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "validate email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"as@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/validate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"validate",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 21 Jan 2022 05:26:04 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"msg\": \"\",\n    \"additional\": \"\",\n    \"data\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "createuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"satya@gmail.com\",\r\n    \"password\":\"sahil555555\",\r\n    \"first_name\":\"satyam\",\r\n    \"last_name\":\"singh\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
