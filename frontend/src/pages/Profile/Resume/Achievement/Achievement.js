@@ -82,7 +82,7 @@ const Achievement = () => {
 
                                 <div className="col-md-6 mb-2 d-flex form-group">
                                     <label className="form-label mx-2 fs-3">Achievement<span className="text-warning">*</span></label>
-                                    <input type="text" class="form-control" name="archieved" onChange={addformHandler} value={achivementForm.skillName} placeholder="Achievements" />
+                                    <textarea class="form-control" name="archieved" onChange={addformHandler} value={achivementForm.skillName} placeholder="Achievements" />
                                 </div>
 
                             </div>
