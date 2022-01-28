@@ -1,0 +1,11 @@
+.cust-nav{
+    background-color: #575781ed!important;
+    color:#ffffff;
+}
+/* .nav-li li{
+    transition: 1s ease-in;
+} */
+
+.nav-li li:hover{
+    border-bottom: 2px solid maroon;
+}

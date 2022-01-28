@@ -1,17 +1,32 @@
-from functools import partial
-import re
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from rest_framework.decorators import api_view,permission_classes,parser_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import FormParser,MultiPartParser
 from rest_framework.response import Response
-from .serializers import AchievmentSerializer, UserProfileSerializer,ProjectSerializer,ExperienceSerializer,SkillSerializer,EducationSerializer
+from .serializers import AchievmentSerializer, UserProfileSerializer,ProjectSerializer,ExperienceSerializer,SkillSerializer,EducationSerializer, UserSerializer
 from .models import Achievement, Education, UserProfile,Project,Experince,Skill
 
 def ResponseFormat(error,msg,additionalmsg,data):
     return Response({"error":error,"msg":msg,"additonalMsg":additionalmsg,"data":data})
 
+
+@api_view(['GET'])
+def getAllUserDetails(request):
+    if request.method =="GET":
+        try:
+            education = EducationSerializer(Education.objects.filter(user = request.user),many=True);
+            skills = SkillSerializer(Skill.objects.filter(user = request.user),many=True)
+            achievement = AchievmentSerializer(Achievement.objects.filter(user=request.user),many=True)
+            experience = ExperienceSerializer(Experince.objects.filter(user = request.user),many=True)
+            project = ProjectSerializer(Project.objects.filter(user = request.user),many=True)
+            user = UserSerializer(User.objects.get(email= request.user))
+            userprofile = UserProfileSerializer(UserProfile.objects.get(user = request.user),context={"request": request})
+            data = {"userdata":user.data,"userprofile":userprofile.data,"education":education.data,"experience":experience.data,"project":project.data,"skill":skills.data,"achievement":achievement.data}
+            return ResponseFormat(False,"","",data)
+        except Exception as e:
+            return ResponseFormat(True,str(e),"Error Occured in getting users all data ",[]) 
+        
 
 @api_view(['GET','POST','PATCH','DELETE'])
 def EducationView(request,id=None):
@@ -28,7 +43,7 @@ def EducationView(request,id=None):
             serializer = EducationSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(user = request.user)
-                return ResponseFormat(False,"","",[])
+                return ResponseFormat(False,"","",serializer.data)
             else:
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in creating user Education !!!",[])
         except Exception as e:
@@ -62,7 +77,6 @@ def EducationView(request,id=None):
 
 
 # api calls for skills  
-
 @api_view(['GET','POST','PATCH','DELETE'])
 def SkillsView(request,id=None):
     if request.method == "GET":
@@ -78,7 +92,7 @@ def SkillsView(request,id=None):
             serializer = SkillSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(user = request.user)
-                return ResponseFormat(False,"","",[])
+                return ResponseFormat(False,"","",serializer.data)
             else:
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in creating user skills !!!",[])
         except Exception as e:
@@ -128,7 +142,7 @@ def AchievementView(request,id=None):
             serializer = AchievmentSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(user = request.user)
-                return ResponseFormat(False,"","",[])
+                return ResponseFormat(False,"","",serializer.data)
             else:
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in creating user Achievement !!!",[])
         except Exception as e:
@@ -178,7 +192,7 @@ def ExperienceView(request,id=None):
             serializer = ExperienceSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return ResponseFormat(False,"","",[])
+                return ResponseFormat(False,"","",serializer.data)
             else:
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in creating user Experience !!!",[])
         except Exception as e:
@@ -230,7 +244,7 @@ def ProjectView(request,id=None):
             serializer = ProjectSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return ResponseFormat(False,"","",[])
+                return ResponseFormat(False,"","",serializer.data)
             else:
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in creating user Projects!!!",[])
         except Exception as e:
@@ -264,9 +278,8 @@ def ProjectView(request,id=None):
             return ResponseFormat(True,str(e),"Error Occured in Deleting user Projects ",[]) 
 
 
-@api_view(['GET','POST','PATCH'])
-@permission_classes([IsAuthenticated])
-@parser_classes([MultiPartParser,FormParser])
+# @parser_classes([MultiPartParser,FormParser])
+@api_view(['GET','POST','PATCH','DELETE'])
 def UserProfileView(request):
     if request.method == "GET":
         try:
@@ -284,10 +297,13 @@ def UserProfileView(request):
         try:
             data = request.data
             user = UserProfile.objects.get(user = request.user)
-            serializer = UserProfileSerializer(instance=user,data=data,context={"request": request})
+            
+            serializer = UserProfileSerializer(user,data=data,partial=True)
             if serializer.is_valid():
-                serializer.save(user=request.user)
-                return ResponseFormat(False,"","","Profile Updated SuccessFully !!!")
+                serializer.save(user=request    .user)
+                user = UserProfile.objects.get(user = request.user)
+                serializer =UserProfileSerializer(user,context={"request": request})
+                return ResponseFormat(False,"Profile Updated SuccessFully !!!","",serializer.data)
             else :
                 return ResponseFormat(True,str(serializer.errors),"Error Occured in Updating UserProfile !!!",[])
         except Exception as e:

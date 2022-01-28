@@ -109,7 +109,7 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.skillName
-    
+
 class Education(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     boardName = models.CharField(max_length=100)

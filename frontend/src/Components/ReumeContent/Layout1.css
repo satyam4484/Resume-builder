@@ -1,0 +1,22 @@
+.lc{
+    background-color: rgba(27, 30, 47, 1);
+}
+/* .my-row{
+    width: 400px;
+} */
+.img img{
+    width: 35%;
+    border:none;
+    padding: 0;
+    border-radius: 80px;
+    border:4px solid rgba(254, 203, 0, 1);
+}
+
+.sm-card{
+    background-color: rgba(35, 37, 55, 1);
+    border-bottom: 1px solid grey;
+    
+}
+
+
+/* rgba(35, 37, 55, 1) */

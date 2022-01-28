@@ -23,6 +23,7 @@ def updatePassword(request):
 
 
 @api_view(['POST','GET','PATCH'])
+@permission_classes([AllowAny])
 def UserAccount(request):
     if request.method == "GET":
         try:
@@ -34,12 +35,13 @@ def UserAccount(request):
     elif request.method == "POST":
         try:
             data = request.data 
-            serializer = UserSerializer(data = data,context={"request": request})
-            if serializer.is_valid():
-                serializer.save()
+            user = User.objects.create(email = data['email'],first_name=data['first_name'],last_name=data['last_name'])
+            user.set_password(data['password'])
+            user.save()
+            if User.objects.filter(email = data['email']):
                 return Response({"error":False,"msg":"Account Created Successfully !!","additional":"","data":""})
             else:
-                return Response({"error":True,"msg":str(serializer.errors),"additional":"erorr occured in creating user ","data":""})
+                return Response({"error":True,"msg":"something went wrong","additional":"erorr occured in creating user ","data":""})
         except Exception as e:
             return Response({"error":True,"msg":str(e),"additional":"error occured in creating user ","data":""})
     elif request.method == "PATCH":
@@ -59,7 +61,6 @@ def UserAccount(request):
 @permission_classes([AllowAny])
 def validateUser(request):
     try:
-        print("validating user")
         email = request.data['email']
         if User.objects.filter(email = email):
             return Response({"error":True,"msg":"Email Already Taken!!","additional":"","data":""})

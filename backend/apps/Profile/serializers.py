@@ -9,16 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id','email','first_name','last_name','is_admin','last_login']
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    profilePic = serializers.SerializerMethodField()
     class Meta:
         model = UserProfile
         fields=['user','professionalTitle','headline','profilePic','github','linkedin','contactNo']
         extra_kwargs = {'user': {'required': False}}
 
-    def get_profilePic(self,UserProfile):
-        request = self.context.get('request')
-        image = UserProfile.profilePic.url
-        return request.build_absolute_uri(image)
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
